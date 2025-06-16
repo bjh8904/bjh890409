@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-M22HPR3F');</script>
+    <!-- End Google Tag Manager -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RSPMFCY5F6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RSPMFCY5F6');
+    </script>
+    <title>보도자료 작성기</title>
+    <meta charset="utf-8">
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M22HPR3F"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <h1><a href="index.html">방준호의 브런치</a></h1>
+    <textarea id="prompt" rows="10" cols="80" placeholder="요청 내용을 입력하세요"></textarea>
+    <br>
+    <button id="generate">생성하기</button>
+    <pre id="result"></pre>
+
+    <script>
+    document.getElementById('generate').addEventListener('click', async () => {
+        const prompt = document.getElementById('prompt').value;
+        const res = await fetch('https://api.openai.com/v1/chat/completions', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${OPENAI_API_KEY}` // 서버에서 주입된 키 사용
+            },
+            body: JSON.stringify({
+                model: 'gpt-3.5-turbo',
+                messages: [{ role: 'user', content: prompt }]
+            })
+        });
+        const data = await res.json();
+        document.getElementById('result').textContent = data.choices[0].message.content;
+    });
+    </script>
+</body>
+</html>
