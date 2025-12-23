@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>설문지 | 방준호의 브런치</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #f0ebf8;
+      font-family: 'Roboto', sans-serif;
+      color: #202124;
+    }
+    a { color: inherit; text-decoration: none; }
+    .header-bar {
+      background: linear-gradient(135deg, #673ab7, #5e35b1);
+      padding: 18px 24px;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    .header-bar h1 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+    .page-wrapper {
+      max-width: 760px;
+      margin: 24px auto 80px;
+      padding: 0 16px;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.16);
+      margin-bottom: 16px;
+      padding: 24px;
+      border-top: 10px solid #673ab7;
+    }
+    .card.secondary {
+      border-top-color: transparent;
+    }
+    .card h2 {
+      margin: 0 0 8px;
+      font-weight: 500;
+      font-size: 24px;
+    }
+    .card p {
+      margin: 0 0 12px;
+      color: #5f6368;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+    .form-row {
+      margin: 18px 0;
+    }
+    .label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 15px;
+      margin-bottom: 8px;
+      color: #202124;
+      font-weight: 500;
+    }
+    .required {
+      color: #d93025;
+      font-size: 16px;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    input[type="date"],
+    input[type="time"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #dadce0;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: border 0.2s ease, box-shadow 0.2s ease;
+      background: #fff;
+    }
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #673ab7;
+      box-shadow: 0 0 0 3px rgba(103,58,183,0.2);
+    }
+    textarea { min-height: 100px; resize: vertical; }
+    .choice-list { display: grid; gap: 10px; }
+    .choice-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+    }
+    .section-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0 0 4px;
+    }
+    .section-desc { margin: 0 0 12px; color: #5f6368; font-size: 14px; }
+    .chips {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 6px;
+    }
+    .chip {
+      padding: 6px 10px;
+      background: #ede7f6;
+      color: #5e35b1;
+      border-radius: 16px;
+      font-size: 12px;
+      border: 1px solid #d1c4e9;
+    }
+    .submit-row {
+      display: flex;
+      justify-content: flex-start;
+      gap: 12px;
+      align-items: center;
+      margin-top: 12px;
+    }
+    .submit-btn {
+      background: #673ab7;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 24px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: filter 0.2s ease, transform 0.1s ease;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.24);
+    }
+    .submit-btn:hover { filter: brightness(1.05); }
+    .submit-btn:active { transform: translateY(1px); }
+    .link-btn {
+      color: #673ab7;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .footer-note {
+      text-align: center;
+      color: #5f6368;
+      font-size: 12px;
+      margin-top: 16px;
+    }
+    .progress-bar {
+      height: 6px;
+      background: #ede7f6;
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 8px 0 0;
+    }
+    .progress-bar span {
+      display: block;
+      height: 100%;
+      width: 45%;
+      background: #673ab7;
+    }
+  </style>
+</head>
+<body>
+  <header class="header-bar">
+    <h1>설문지 (미리보기)</h1>
+  </header>
+
+  <main class="page-wrapper">
+    <section class="card">
+      <h2>방준호 브런치 독자 설문</h2>
+      <p>블로그를 방문하신 경험과 관심사를 알려주세요. 답변은 익명으로 수집되며 뉴스레터, 콘텐츠 기획에 활용됩니다.</p>
+      <div class="chips">
+        <span class="chip">구글 폼 스타일</span>
+        <span class="chip">응답 소요 시간 2~3분</span>
+        <span class="chip">필수 질문 * 표기</span>
+      </div>
+      <div class="progress-bar" aria-hidden="true"><span></span></div>
+    </section>
+
+    <section class="card secondary">
+      <div class="form-row">
+        <label class="label">이메일 주소 <span class="required">*</span></label>
+        <input type="email" placeholder="example@gmail.com" required>
+      </div>
+
+      <div class="form-row">
+        <label class="label">이름 <span class="required">*</span></label>
+        <input type="text" placeholder="실명을 입력해주세요" required>
+      </div>
+
+      <div class="form-row">
+        <label class="label">연령대</label>
+        <select>
+          <option>선택하세요</option>
+          <option>10대</option>
+          <option>20대</option>
+          <option>30대</option>
+          <option>40대</option>
+          <option>50대 이상</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <div class="section-title">방문 빈도 <span class="required">*</span></div>
+        <div class="choice-list">
+          <label class="choice-item"><input type="radio" name="visit" required> 매주 방문해요</label>
+          <label class="choice-item"><input type="radio" name="visit"> 한 달에 몇 번</label>
+          <label class="choice-item"><input type="radio" name="visit"> 검색하다가 가끔</label>
+          <label class="choice-item"><input type="radio" name="visit"> 이번이 처음이에요</label>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="section-title">가장 관심 있는 주제 (복수 선택 가능)</div>
+        <div class="choice-list">
+          <label class="choice-item"><input type="checkbox"> 사회복지/장애인 정책</label>
+          <label class="choice-item"><input type="checkbox"> 생산성/협업 도구</label>
+          <label class="choice-item"><input type="checkbox"> 기술 트렌드와 AI</label>
+          <label class="choice-item"><input type="checkbox"> 일상 이야기와 에세이</label>
+          <label class="choice-item"><input type="checkbox"> 기타</label>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label class="label">최근 읽은 글 제목</label>
+        <input type="text" placeholder="예) 팀워크는 잡담으로부터 나온다">
+      </div>
+
+      <div class="form-row">
+        <label class="label">읽은 날짜</label>
+        <input type="date">
+      </div>
+
+      <div class="form-row">
+        <label class="label">뉴스레터 수신 희망 시간대</label>
+        <input type="time">
+      </div>
+
+      <div class="form-row">
+        <label class="label">기대하는 콘텐츠 형식</label>
+        <select>
+          <option>선택하세요</option>
+          <option>칼럼/에세이</option>
+          <option>튜토리얼</option>
+          <option>인터뷰</option>
+          <option>요약 레터</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <div class="section-title">피드백</div>
+        <p class="section-desc">구글 폼과 유사한 카드 레이아웃으로 만들어졌습니다. 개선하거나 추가되면 좋을 점을 자유롭게 적어주세요.</p>
+        <textarea placeholder="자유롭게 작성해주세요"></textarea>
+      </div>
+
+      <div class="form-row">
+        <div class="section-title">만족도</div>
+        <div class="choice-list">
+          <label class="choice-item"><input type="radio" name="satisfaction"> 매우 만족</label>
+          <label class="choice-item"><input type="radio" name="satisfaction"> 만족</label>
+          <label class="choice-item"><input type="radio" name="satisfaction"> 보통</label>
+          <label class="choice-item"><input type="radio" name="satisfaction"> 아쉬움</label>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label class="label">추가로 공유하고 싶은 링크</label>
+        <input type="text" placeholder="https://">
+      </div>
+
+      <div class="submit-row">
+        <button class="submit-btn" type="button">제출</button>
+        <a class="link-btn" href="index.html">다시 수정</a>
+      </div>
+      <p class="footer-note">구글 폼 레이아웃을 참고하여 구현된 데모 페이지입니다. 실제 응답 전송 기능은 포함되지 않습니다.</p>
+    </section>
+  </main>
+</body>
+</html>
