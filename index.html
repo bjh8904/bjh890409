@@ -1,52 +1,368 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-    <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-M22HPR3F');</script>
-    <!-- End Google Tag Manager -->
-     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RSPMFCY5F6"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>모두를 위한 장애인 정책 안내</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --surface: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --primary: #2563eb;
+      --primary-strong: #1d4ed8;
+      --accent: #14b8a6;
+      --border: #dbe3ef;
+      --shadow: 0 18px 45px rgba(20, 38, 77, 0.12);
+    }
 
-  gtag('config', 'G-RSPMFCY5F6');
-</script>
-<title>방준호의 브런치</title>
-<meta charset="utf-8">
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Pretendard", "Noto Sans KR", Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: linear-gradient(180deg, #eef4ff 0%, var(--bg) 45%, #ffffff 100%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: 0 auto;
+    }
+
+    .hero {
+      padding: 4.5rem 0 3rem;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #dbeafe;
+      color: #1e40af;
+      border-radius: 999px;
+      padding: 0.4rem 0.9rem;
+      font-size: 0.88rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: clamp(1.8rem, 3.3vw, 3.2rem);
+      line-height: 1.25;
+      margin-bottom: 1rem;
+      letter-spacing: -0.01em;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: clamp(1rem, 2.1vw, 1.2rem);
+      margin-bottom: 1.6rem;
+    }
+
+    .cta {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 0.8rem 1.3rem;
+      border-radius: 0.75rem;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus-visible {
+      background: var(--primary-strong);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      border-color: #bfdbfe;
+      background: #eff6ff;
+      color: #1d4ed8;
+    }
+
+    .hero-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 1.2rem;
+      box-shadow: var(--shadow);
+      padding: 1.6rem;
+    }
+
+    .hero-card h2 {
+      font-size: 1.15rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-card ul {
+      list-style: none;
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .hero-card li {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.6rem;
+      align-items: start;
+      color: #334155;
+      font-size: 0.96rem;
+    }
+
+    .hero-card li span {
+      display: inline-flex;
+      width: 1.45rem;
+      height: 1.45rem;
+      border-radius: 50%;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.76rem;
+      color: #fff;
+      background: var(--accent);
+      margin-top: 0.12rem;
+      font-weight: 700;
+    }
+
+    section {
+      padding: 2.4rem 0;
+    }
+
+    .section-title {
+      font-size: clamp(1.4rem, 2.4vw, 2rem);
+      margin-bottom: 1rem;
+    }
+
+    .section-desc {
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      max-width: 720px;
+    }
+
+    .policy-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .policy-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.2rem;
+      box-shadow: 0 10px 28px rgba(10, 25, 61, 0.06);
+    }
+
+    .policy-card h3 {
+      font-size: 1.06rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .policy-card p {
+      color: #4b5563;
+      font-size: 0.95rem;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .timeline-item {
+      background: #f8fbff;
+      border: 1px solid #d7e6ff;
+      border-radius: 0.9rem;
+      padding: 1rem;
+    }
+
+    .timeline-item strong {
+      color: #1e3a8a;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .support-box {
+      background: linear-gradient(135deg, #0f4bd8, #0ea5e9);
+      color: #fff;
+      border-radius: 1rem;
+      padding: 1.4rem;
+      display: grid;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .support-box p {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .support-box .btn {
+      background: #fff;
+      color: #1d4ed8;
+      width: fit-content;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+      padding: 1.2rem 0 2.2rem;
+      color: #6b7280;
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        padding-top: 3rem;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .policy-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .policy-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        padding: 1.2rem;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
-
 <body>
-    <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M22HPR3F"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-<h1><a href="index.html">방준호의 브런치</a></h1>
-<ol>
-    <li><a href="1.html">2025 전국지체장애인지도자 대회를 다녀오다.</a></li>
-    <li><a href="2.html">사회복지사 여러분, ChatGPT 사용하시죠?</a></li>
-    <li><a href="3.html">팀워크는 잡담으로부터 나온다</a></li>
-</ol>
+  <header class="hero">
+    <div class="container hero-inner">
+      <div>
+        <span class="badge">2026 장애인 정책 안내</span>
+        <h1>모두가 차별 없이 누리는<br>포용적 복지 사회를 만듭니다</h1>
+        <p>
+          이동권, 돌봄, 고용, 교육까지 삶의 전 영역에서 장애인의 자립과 참여를 보장하는 핵심 정책을 한눈에 확인하세요.
+        </p>
+        <div class="cta">
+          <a href="#policies" class="btn btn-primary">주요 정책 보기</a>
+          <a href="#apply" class="btn btn-outline">신청 절차 확인</a>
+        </div>
+      </div>
+      <aside class="hero-card" aria-label="핵심 요약 카드">
+        <h2>핵심 변화 요약</h2>
+        <ul>
+          <li><span>1</span> 활동지원 서비스 확대: 대상 기준 완화 및 지원시간 상향</li>
+          <li><span>2</span> 장애인 맞춤형 공공일자리 확대: 훈련부터 취업연계까지 통합지원</li>
+          <li><span>3</span> 발달장애인 가족돌봄 휴식지원 강화: 지역센터 연계 서비스 신설</li>
+          <li><span>4</span> 주거 접근성 개선: 무장애 주택 개·보수 지원 예산 증액</li>
+        </ul>
+      </aside>
+    </div>
+  </header>
 
-<h2>안녕하세요. 방준호의 브런치에 오신걸 환영합니다.</h2>
-<p>이곳은 한국지체장애인협회 방준호 대리의 홈페이지 공간입니다. 오신 여러분을 환영합니다.</p>
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/67b08f607aa782190bfbfb74/1ik4r051b';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
-    </script>
-    <!--End of Tawk.to Script-->
+  <main>
+    <section id="policies">
+      <div class="container">
+        <h2 class="section-title">분야별 주요 정책</h2>
+        <p class="section-desc">
+          장애유형과 생애주기에 맞춘 실질적 지원을 위해 4대 분야(돌봄·고용·이동·주거) 정책을 강화했습니다.
+        </p>
+        <div class="policy-grid">
+          <article class="policy-card">
+            <h3>돌봄·건강 지원</h3>
+            <p>중증장애인 방문재활, 심리상담 바우처, 가족 돌봄 공백 긴급지원 제도를 확대합니다.</p>
+          </article>
+          <article class="policy-card">
+            <h3>고용·자립 지원</h3>
+            <p>직무훈련-인턴십-정규채용 연계형 프로그램을 통해 안정적인 경제활동을 지원합니다.</p>
+          </article>
+          <article class="policy-card">
+            <h3>이동권 보장</h3>
+            <p>저상버스, 특별교통수단, 보행환경 개선사업을 지역별로 단계적으로 확충합니다.</p>
+          </article>
+          <article class="policy-card">
+            <h3>주거 접근성</h3>
+            <p>문턱 제거, 손잡이 설치, 안전센서 구축 등 무장애 주거환경 개보수를 지원합니다.</p>
+          </article>
+          <article class="policy-card">
+            <h3>교육·디지털 격차 해소</h3>
+            <p>보조공학기기와 디지털 학습도구를 지원해 학습권과 정보접근권을 강화합니다.</p>
+          </article>
+          <article class="policy-card">
+            <h3>권익 보호</h3>
+            <p>학대·차별 신고 통합창구를 확대하고 법률·심리 상담 연계 서비스를 제공합니다.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="apply">
+      <div class="container">
+        <h2 class="section-title">정책 신청 절차</h2>
+        <p class="section-desc">복지로, 주민센터, 지역 장애인지원센터에서 신청할 수 있습니다.</p>
+        <div class="timeline">
+          <div class="timeline-item">
+            <strong>STEP 1. 자격 확인</strong>
+            장애등록 여부, 소득 기준, 서비스 필요도 등 신청 자격을 확인합니다.
+          </div>
+          <div class="timeline-item">
+            <strong>STEP 2. 신청 접수</strong>
+            온라인(복지로) 또는 오프라인(주민센터)으로 신청서와 증빙서류를 제출합니다.
+          </div>
+          <div class="timeline-item">
+            <strong>STEP 3. 심사 및 안내</strong>
+            관할 기관 심사 후 서비스 유형·지원 수준을 안내받습니다.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="support-box">
+          <div>
+            <h2 class="section-title">도움이 필요하신가요?</h2>
+            <p>장애인 정책 상담센터(국번없이 129)를 통해 개인별 지원제도 안내를 받을 수 있습니다.</p>
+          </div>
+          <a class="btn" href="tel:129">129 바로 전화하기</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© 2026 장애인 정책 안내 랜딩페이지 · 누구나 정보에 접근할 수 있도록 웹 접근성을 고려해 제작되었습니다.</div>
+  </footer>
 </body>
 </html>
